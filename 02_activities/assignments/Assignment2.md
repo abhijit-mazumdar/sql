@@ -54,7 +54,19 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+For type 1 slowly changing dimension design, the CUSTOMER_ADDRESS table would have the following columns:
+CustomerID
+CustomerName
+CustomerAddress
+
+Since, it is type 1, we would simply overwrite the CustomerAddress column with the new address if and when it changes since we do not mind losing the old address in this design.
+
+For type 2 slowly changing dimension design, I would add 2 more nullable datetime columns to the CUSTOMER_ADDRESS table called ValidFrom and ValidTo which would track the dates when the customer address is valid from and valid to. This would help to track the previous addresses of the customer. The new CUSTOMER_ADDRESS table will have these columns:
+CustomerID
+CustomerName
+CustomerAddress
+ValidFrom
+ValidTo
 ```
 
 ***
